@@ -159,6 +159,7 @@ Vue.createApp({
       pokeList: pokeList.sort(() => Math.random() - 0.5),
       selectedCards: [],
       pairedCards: [],
+      gameResult: { win: false },
     };
   },
   computed: {
@@ -172,6 +173,12 @@ Vue.createApp({
         (poke) => !this.showUnCoveredCards.includes(poke)
       );
       //console.log("showCoveredCards", coveredCards);
+      if (coveredCards.length === 0) {
+        this.gameResult = {
+          ...this.gameResult,
+          win: true,
+        };
+      }
       return coveredCards;
     },
   },
