@@ -158,11 +158,12 @@ Vue.createApp({
     return {
       pokeList: pokeList.sort(() => Math.random() - 0.5),
       selectedCards: [],
+      pairedCards: [],
     };
   },
   computed: {
     showUnCoveredCards() {
-      const uncoveredCards = [...this.selectedCards];
+      const uncoveredCards = [...this.selectedCards, ...this.pairedCards];
       // console.log("showUnCoveredCards", uncoveredCards);
       return uncoveredCards;
     },
@@ -177,7 +178,17 @@ Vue.createApp({
   methods: {
     handleClickCard(card) {
       this.selectedCards.push(card);
-      console.log("list", this.selectedCards);
+      if (this.selectedCards.length === 2) {
+        const [card1, card2] = this.selectedCards;
+        if (card1.id === card2.id) {
+          this.pairedCards.push(card1);
+          this.pairedCards.push(card2);
+        }
+
+        setTimeout(() => {
+          this.selectedCards = [];
+        }, 700);
+      }
     },
   },
 }).mount("#app");
