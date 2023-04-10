@@ -215,5 +215,17 @@ Vue.createApp({
         }, 700);
       }
     },
+    handleResetGame() {
+      this.pokeList = this.cards.sort(() => Math.random() - 0.5);
+      this.selectedCards = [];
+      this.pairedCards = [];
+      this.gameResult = {
+        win: false,
+        lose: false,
+      };
+      this.gameData = {
+        hearts: 3,
+      };
+    },
   },
 }).mount("#app");
