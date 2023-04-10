@@ -162,6 +162,7 @@ Vue.createApp({
       gameResult: { win: false, lose: false },
       gameData: {
         hearts: 3,
+        selectedDeck: 4,
       },
     };
   },
@@ -186,6 +187,10 @@ Vue.createApp({
     },
   },
   watch: {
+    "gameData.selectedDeck": function (newValue, oldValue) {
+      console.log("watch", newValue, oldValue);
+      this.handleResetGame();
+    },
     "gameData.hearts": function (newValue, oldValue) {
       // console.log("watch", newValue, oldValue);
       if (newValue <= 0) {

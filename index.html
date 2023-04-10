@@ -18,17 +18,20 @@
       <div class="page-content">
         <!-- <div class="current-date-time"></div> -->
         <img
-          src="assets/images/cyberlearn-min-new-opt2.png"
+          src="https://seeklogo.com/images/P/Pokemon-logo-497D61B223-seeklogo.com.png"
           alt=""
           class="logo-pokemon"
         />
         <h1 class="page-title">Pokemon Game</h1>
+
+        <!-- choose the numbers of cards/ options -->
         <form class="game-options">
           <label for="gameOption1" class="game-options__label"
             ><input
               id="gameOption1"
               type="radio"
               value="4"
+              v-model="gameData.selectedDeck"
               class="game-options__input"
             />
             <svg width="20px" height="20px" viewBox="0 0 20 20">
@@ -49,6 +52,7 @@
               id="gameOption2"
               type="radio"
               value="6"
+              v-model="gameData.selectedDeck"
               class="game-options__input"
             />
             <svg width="20px" height="20px" viewBox="0 0 20 20">
@@ -69,6 +73,7 @@
               id="gameOption3"
               type="radio"
               value="8"
+              v-model="gameData.selectedDeck"
               class="game-options__input"
             />
             <svg width="20px" height="20px" viewBox="0 0 20 20">
@@ -89,6 +94,7 @@
               id="gameOption4"
               type="radio"
               value="10"
+              v-model="gameData.selectedDeck"
               class="game-options__input"
             />
             <svg width="20px" height="20px" viewBox="0 0 20 20">
@@ -105,12 +111,15 @@
             <span class="game-options__text"> 10 </span></label
           >
         </form>
+
+        <!-- hearts -->
         <div game-data>
           <p class="game-data__item game-data__fails">
             Your hearts: {{gameData.hearts}}
           </p>
         </div>
 
+        <!-- render cards/win/lose/reset -->
         <ul class="game-list-cards">
           <li
             v-for="(poke,index) in pokeList"
