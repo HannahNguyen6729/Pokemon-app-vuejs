@@ -110,7 +110,9 @@
           <li
             v-for="(poke,index) in pokeList"
             :key="poke.id"
-            class="game-card is-uncovered"
+            @click="handleClickCard(poke)"
+            :class="{'is-uncovered': showUnCoveredCards.includes(poke), 'is-covered': showCoveredCards.includes(poke) }"
+            class="game-card"
           >
             <div class="game-card__face game-card-front">
               <h3 class="game-card-front__name">{{poke.name}}</h3>

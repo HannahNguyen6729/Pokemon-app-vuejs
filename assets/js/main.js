@@ -157,7 +157,27 @@ Vue.createApp({
   data() {
     return {
       pokeList: pokeList.sort(() => Math.random() - 0.5),
+      selectedCards: [],
     };
   },
-  methods: {},
+  computed: {
+    showUnCoveredCards() {
+      const uncoveredCards = [...this.selectedCards];
+      // console.log("showUnCoveredCards", uncoveredCards);
+      return uncoveredCards;
+    },
+    showCoveredCards() {
+      const coveredCards = this.pokeList.filter(
+        (poke) => !this.showUnCoveredCards.includes(poke)
+      );
+      //console.log("showCoveredCards", coveredCards);
+      return coveredCards;
+    },
+  },
+  methods: {
+    handleClickCard(card) {
+      this.selectedCards.push(card);
+      console.log("list", this.selectedCards);
+    },
+  },
 }).mount("#app");
