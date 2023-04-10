@@ -22,7 +22,7 @@
           alt=""
           class="logo-pokemon"
         />
-        <h1 class="page-title">Cyber Pokemon</h1>
+        <h1 class="page-title">Pokemon Game</h1>
         <form class="game-options">
           <label for="gameOption1" class="game-options__label"
             ><input
@@ -114,7 +114,10 @@
           >
             <div class="game-card__face game-card-front">
               <h3 class="game-card-front__name">{{poke.name}}</h3>
-              <img src="poke.images.png" class="game-card-front__image" />
+              <img
+                :src="poke.images.png.front"
+                class="game-card-front__image"
+              />
             </div>
             <div class="game-card__face game-card-back">
               <div class="game-card-back__inner">?</div>
