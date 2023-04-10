@@ -159,7 +159,10 @@ Vue.createApp({
       pokeList: pokeList.sort(() => Math.random() - 0.5),
       selectedCards: [],
       pairedCards: [],
-      gameResult: { win: false },
+      gameResult: { win: false, lose: false },
+      gameData: {
+        hearts: 3,
+      },
     };
   },
   computed: {
@@ -182,6 +185,17 @@ Vue.createApp({
       return coveredCards;
     },
   },
+  watch: {
+    "gameData.hearts": function (newValue, oldValue) {
+      // console.log("watch", newValue, oldValue);
+      if (newValue <= 0) {
+        this.gameResult = {
+          ...this.gameResult,
+          lose: true,
+        };
+      }
+    },
+  },
   methods: {
     handleClickCard(card) {
       this.selectedCards.push(card);
@@ -190,6 +204,10 @@ Vue.createApp({
         if (card1.id === card2.id) {
           this.pairedCards.push(card1);
           this.pairedCards.push(card2);
+        } else {
+          this.gameData = {
+            hearts: this.gameData.hearts - 1,
+          };
         }
 
         setTimeout(() => {

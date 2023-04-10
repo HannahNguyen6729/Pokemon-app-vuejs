@@ -105,6 +105,11 @@
             <span class="game-options__text"> 10 </span></label
           >
         </form>
+        <div game-data>
+          <p class="game-data__item game-data__fails">
+            Your hearts: {{gameData.hearts}}
+          </p>
+        </div>
 
         <ul class="game-list-cards">
           <li
@@ -129,6 +134,9 @@
         <button class="button button--game">Reset Game</button>
         <div v-if="gameResult.win" class="game-result game-result--win">
           Win
+        </div>
+        <div v-if="gameResult.lose" class="game-result game-result--lose">
+          Lose
         </div>
         <!---->
       </div>
