@@ -221,7 +221,7 @@ Vue.createApp({
       }
     },
     handleResetGame() {
-      this.pokeList = this.cards.sort(() => Math.random() - 0.5);
+      this.pokeList = this.pokeList.sort(() => Math.random() - 0.5);
       this.selectedCards = [];
       this.pairedCards = [];
       this.gameResult = {
