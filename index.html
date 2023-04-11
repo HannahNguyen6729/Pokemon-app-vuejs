@@ -24,7 +24,7 @@
         />
         <h1 class="page-title">Pokemon Game</h1>
 
-        <!-- choose the numbers of cards/ options -->
+        <!-- choose the numbers of cards/ options/ handle select deck -->
         <form class="game-options">
           <label for="gameOption1" class="game-options__label"
             ><input
@@ -120,7 +120,13 @@
         </div>
 
         <!-- render cards/win/lose/reset -->
-        <ul class="game-list-cards">
+        <ul
+          :class=" {
+            'game-list-cards--8': gameData.selectedDeck==8,
+            'game-list-cards--10': gameData.selectedDeck==10
+        }"
+          class="game-list-cards"
+        >
           <li
             v-for="(poke,index) in pokeList"
             :key="index"
